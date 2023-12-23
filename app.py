@@ -16,20 +16,9 @@ PAGE_TITLE = "Digital Resume | Wynn"
 PAGE_ICON = ":wave:"
 NAME = "Wynn"
 DESCRIPTION = """
-Senior Computer Engineer Student - Pursuring a Masters in CSE starting Fall 24
+Senior Computer Engineer Student at University of Michigan - Pursuring a Masters in CSE starting Fall 24
 """
 EMAIL = "wynnkaza@umich.edu"
-SOCIAL_MEDIA = {
-    "LinkedIn": "https://linkedin.com",
-    "GitHub": "https://github.com/Fazanza",
-}
-PROJECTS = {
-    "🏆 Sales Dashboard - Comparing sales across three stores": "https://youtu.be/Sb0A9i6d320",
-    "🏆 Income and Expense Tracker - Web app with NoSQL database": "https://youtu.be/3egaMfE9388",
-    "🏆 Desktop Application - Excel2CSV converter with user settings & menubar": "https://youtu.be/LzCfNanQ_9c",
-    "🏆 MyToolBelt - Custom MS Excel add-in to combine Python & Excel": "https://pythonandvba.com/mytoolbelt/",
-}
-
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
@@ -39,6 +28,13 @@ with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
+with open("pdfs/EECS_373_Report.pdf", "rb") as pdf_file:
+    eecs_373_report = pdf_file.read()
+with open("pdfs/EECS_470_Report.pdf", "rb") as pdf_file:
+    eecs_470_report = pdf_file.read()
+with open("pdfs/EECS_583_Final_Report.pdf", "rb") as pdf_file:
+    eecs_583_report = pdf_file.read()
+
 profile_pic = Image.open(profile_pic)
 
 
@@ -53,7 +49,7 @@ with col2:
     st.download_button(
         label=" 📄 Download Resume",
         data=PDFbyte,
-        file_name=resume_file.name,
+        file_name="Wynn-Resume.pdf",
         mime="application/octet-stream",
     )
     st.write("📫", EMAIL)
@@ -61,19 +57,17 @@ with col2:
 
 # --- SOCIAL LINKS ---
 st.write('\n')
-cols = st.columns(len(SOCIAL_MEDIA))
-for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
-    cols[index].write(f"[{platform}]({link})")
-
+col1, col2 = st.columns([2, 1], gap="small")
+col1.write("📱[LinkedIn](https://www.linkedin.com/in/wynn-kaza/)")
+col2.write("🗃️[GitHub](https://github.com/Fazanza)")
 
 # --- EXPERIENCE & QUALIFICATIONS ---
 st.write('\n')
-st.subheader("Experience & Qulifications")
+st.subheader("About")
 st.write(
     """
-- ✔️ 7 Years expereince extracting actionable insights from data
-- ✔️ Strong hands on experience and knowledge in Python and Excel
-- ✔️ Good understanding of statistical principles and their respective applications
+- ✔️ 3+ Years experience working on software and hardware design
+- ✔️ Interest in increasing software performance through hardware acceleration  
 - ✔️ Excellent team-player and displaying strong sense of initiative on tasks
 """
 )
@@ -81,13 +75,13 @@ st.write(
 
 # --- SKILLS ---
 st.write('\n')
-st.subheader("Hard Skills")
+st.subheader("Technical Skills")
 st.write(
     """
-- 👩‍💻 Programming: Python (Scikit-learn, Pandas), SQL, VBA
-- 📊 Data Visulization: PowerBi, MS Excel, Plotly
-- 📚 Modeling: Logistic regression, linear regression, decition trees
-- 🗄️ Databases: Postgres, MongoDB, MySQL
+- 👩‍💻 **Software**: C++, Python, GO, C, SQL
+- 📚 **Software Libraries**: MPI, OpenMP, Cuda, LLVM
+- ⚙️ **Hardware**: SystemVerilog / Verilog, ARM Assembly, Bash
+- 💻 **Techonology**: FPGA, Linux(Ubuntu), Altium/Allegro, Virtuoso, Version Contol (Git)
 """
 )
 
@@ -98,37 +92,27 @@ st.subheader("Work History")
 st.write("---")
 
 # --- JOB 1
-st.write("🚧", "**Senior Data Analyst | Ross Industries**")
-st.write("02/2020 - Present")
+st.write("🚧", "**Hardware Developer Intern | IBM**")
+st.write("05/2023 - 08/2023")
 st.write(
     """
-- ► Used PowerBI and SQL to redeﬁne and track KPIs surrounding marketing initiatives, and supplied recommendations to boost landing page conversion rate by 38%
-- ► Led a team of 4 analysts to brainstorm potential marketing and sales improvements, and implemented A/B tests to generate 15% more client leads
-- ► Redesigned data model through iterations that improved predictions by 12%
+    - ► Revamped backend database infrastructure by transitioning from Sqlite3 to MariaDB
+    - ► Designed Arduino Nano 33 BLE PCB shield and wrote API C++/Python library to interface between tester and computer
+    - ► Refactored C++ code for vpd tools, increasing speed for future development and simplifying cross-platform compilation
 """
 )
+
 
 # --- JOB 2
 st.write('\n')
-st.write("🚧", "**Data Analyst | Liberty Mutual Insurance**")
-st.write("01/2018 - 02/2022")
+st.write("🚧", "**Electrical Engineering Intern | Whisker**")
+st.write("05/2022 - 08/2022")
 st.write(
     """
-- ► Built data models and maps to generate meaningful insights from customer data, boosting successful sales eﬀorts by 12%
-- ► Modeled targets likely to renew, and presented analysis to leadership, which led to a YoY revenue increase of $300K
-- ► Compiled, studied, and inferred large amounts of data, modeling information to drive auto policy pricing
-"""
-)
-
-# --- JOB 3
-st.write('\n')
-st.write("🚧", "**Data Analyst | Chegg**")
-st.write("04/2015 - 01/2018")
-st.write(
-    """
-- ► Devised KPIs using SQL across company website in collaboration with cross-functional teams to achieve a 120% jump in organic traﬃc
-- ► Analyzed, documented, and reported user survey results to improve customer communication processes by 18%
-- ► Collaborated with analyst team to oversee end-to-end process surrounding customers' return data
+    - ► Developed a solution for Company’s Main Board Test Fixture, resolving an critical issue with the ESP-Programmer burning
+        out when programming the main board
+    - ► Constructed multiple R&D based PCBs in Altium, encapsulating breakout boards for ESP-Programmers, ToF Sensors, Stepper Motor Driver, and more
+    - ► Built two test fixtures to test design changes on LR4 Main Board and ToF Board, verifying effect of board changes
 """
 )
 
@@ -137,5 +121,55 @@ st.write(
 st.write('\n')
 st.subheader("Projects & Accomplishments")
 st.write("---")
-for project, link in PROJECTS.items():
-    st.write(f"[{project}]({link})")
+
+# -- Project 1
+st.write('\n')
+st.write("💻", "**R10K Inspired Out-of-Order Processor**")
+st.write("10/2023 - 12/2023")
+st.write("""
+        - ► Design and implementing N-Way Superscalar OoO processor with Early Branch Resolution with RISC-V ISA support using
+            SystemVerilog
+        - ► Developed Pag branch predictor, non-blocking D-Cache, victim cache, and Store-To-Load Forwarding to improve CPI
+        - ► Synthesized design obtained 12.06 ns clock period with a 1.87 CPI average on test bench
+""")
+st.download_button(
+        label=" 📄 Download Report",
+        data=eecs_470_report,
+        file_name="OoO-Processor-Report.pdf",
+        mime="application/octet-stream",
+)
+
+# -- Project 2
+st.write('\n')
+st.write("🐉", "**Cache Tiling and Tile Size Selection Algorithms**")
+st.write("10/2023 - 12/2023")
+st.write("""
+        - ► Wrote LLVM pass to replicate cache tiling to reduce number of cache misses in matrix multiplication
+        - ► Improved upon original tiling algorithm by reducing instruction overhead (specifically branches)
+        - ► Developed two new algorithms to find optimal tiling size within the new restrictions: implemented algorithms obtained
+            58.56% and 84.37% less cache miss than the original untiled matrix multiplication
+""")
+st.download_button(
+        label=" 📄 Download Report",
+        data=eecs_583_report,
+        file_name="Cache-Tiling-Report.pdf",
+        mime="application/octet-stream",
+)
+
+
+# -- Project 3
+st.write('\n')
+st.write("🏂", "**Snowboard Data Logger**")
+st.write("02/2023 - 05/2023")
+st.write("""
+        - ► Wrote firmware for STM-32 to track snowboard movement with a 9-DOF IMU, calculate location and positioning with GPS,
+            and displayed various important data utilizing a FSM
+        - ► Designed a PCB to manage the power of our system. Features include wireless charging, solar power, and sensor handling
+
+""")
+st.download_button(
+        label=" 📄 Download Report",
+        data=eecs_373_report,
+        file_name="Embedded-System-Report.pdf",
+        mime="application/octet-stream",
+)
