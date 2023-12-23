@@ -16,7 +16,7 @@ PAGE_TITLE = "Digital Resume | Wynn"
 PAGE_ICON = ":wave:"
 NAME = "Wynn"
 DESCRIPTION = """
-Senior Computer Engineer Student at University of Michigan - Pursuring a Masters in CSE starting Fall 24
+Senior Computer Engineer Student at University of Michigan - Pursuing a Masters in CSE starting Fall 24
 """
 EMAIL = "wynnkaza@umich.edu"
 
@@ -66,9 +66,9 @@ st.write('\n')
 st.subheader("About")
 st.write(
     """
-- ✔️ 3+ Years experience working on software and hardware design
+- ✔️ 3+ years experience working on software and hardware design
 - ✔️ Interest in increasing software performance through hardware acceleration  
-- ✔️ Excellent team-player and displaying strong sense of initiative on tasks
+- ✔️ Excellent team-player and displays strong sense of initiative on tasks
 """
 )
 
@@ -81,7 +81,7 @@ st.write(
 - 👩‍💻 **Software**: C++, Python, GO, C, SQL
 - 📚 **Software Libraries**: MPI, OpenMP, Cuda, LLVM
 - ⚙️ **Hardware**: SystemVerilog / Verilog, ARM Assembly, Bash
-- 💻 **Techonology**: FPGA, Linux(Ubuntu), Altium/Allegro, Virtuoso, Version Contol (Git)
+- 💻 **Technology**: FPGA, Linux(Ubuntu), Altium/Allegro, Virtuoso, Version Contol(Git)
 """
 )
 
