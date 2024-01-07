@@ -2,14 +2,13 @@ from pathlib import Path
 
 import streamlit as st
 from PIL import Image
+from streamlit_lottie import st_lottie
 
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "style" / "main.css"
 resume_file = current_dir / "pdfs" / "resume.pdf"
-profile_pic = current_dir / "images" / "profile_pic.jpg"
-
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Digital Resume | Wynn"
@@ -35,13 +34,11 @@ with open("pdfs/EECS_470_Report.pdf", "rb") as pdf_file:
 with open("pdfs/EECS_583_Final_Report.pdf", "rb") as pdf_file:
     eecs_583_report = pdf_file.read()
 
-profile_pic = Image.open(profile_pic)
-
 
 # --- HERO SECTION ---
 col1, col2 = st.columns(2, gap="small")
 with col1:
-    st.image(profile_pic, width=230)
+    st_lottie("https://lottie.host/94f8e07d-4f3e-4228-af43-28ea023f71aa/Pang0SoJZP.json", key="user")
 
 with col2:
     st.title(NAME)
@@ -78,11 +75,23 @@ st.write('\n')
 st.subheader("Technical Skills")
 st.write(
     """
-- 👩‍💻 **Software**: C++, Python, GO, C, SQL
+- 👩‍💻 **Software**: C++, Python, GoLang, C, SQL
 - 📚 **Software Libraries**: MPI, OpenMP, Cuda, LLVM
 - ⚙️ **Hardware**: SystemVerilog / Verilog, ARM Assembly, Bash
 - 💻 **Technology**: FPGA, Linux(Ubuntu), Altium/Allegro, Virtuoso, Version Contol(Git)
 """
+)
+
+
+# --- CourseWork ---
+st.write("\n")
+st.subheader("Course Work")
+st.write(
+    """
+- 📟 **Operating Systems**, **Parallel Computing**, **Advanced Compilers** 
+- 🌌 **Parralel Computer Architecture**, **Computer Architecture**, Computer Organization
+- 🌠 **Computer Networks**, Digitally Integrated Circuits, Intro. to Embedded Systems
+    """
 )
 
 
