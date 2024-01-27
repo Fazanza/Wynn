@@ -33,6 +33,8 @@ with open("pdfs/EECS_470_Report.pdf", "rb") as pdf_file:
     eecs_470_report = pdf_file.read()
 with open("pdfs/EECS_583_Final_Report.pdf", "rb") as pdf_file:
     eecs_583_report = pdf_file.read()
+with open("pdfs/EECS_587_Final_Report.pdf", "rb") as pdf_file:
+    eecs_587_report = pdf_file.read()
 
 
 # --- HERO SECTION ---
@@ -180,5 +182,22 @@ st.download_button(
         label=" 📄 Download Report",
         data=eecs_373_report,
         file_name="Embedded-System-Report.pdf",
+        mime="application/octet-stream",
+)
+
+# -- Project 4
+st.write('\n')
+st.write("🤯", "**DP Parallelization in OpenMP**")
+st.write("10/2023 - 01/2024")
+st.write("""
+        - ► Reworked original GoLang algorithm for solving the Dictionary Problem in C++
+        - ► Developed a OpenMP Parallization solution for running the algorithm which obtained
+         a speedup of 1.2 times on four cores compared to the original algorithm
+
+""")
+st.download_button(
+        label=" 📄 Download Report",
+        data=eecs_587_report,
+        file_name="DP_Parallelization.pdf",
         mime="application/octet-stream",
 )
