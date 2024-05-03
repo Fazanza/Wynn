@@ -51,13 +51,13 @@ with col2:
     st.title(NAME)
     st.write(DESCRIPTION)
     st.download_button(
-        label=" 📄 Download Resume",
+        label=" 📄 Hardware Resume",
         data=PDFbyte,
         file_name="Wynn-Resume.pdf",
         mime="application/octet-stream",
     )
     st.download_button(
-        label=" 📄 Download Resume",
+        label=" 📄 SWE Resume",
         data=swe_PDFbyte,
         file_name="SWE-Wynn-Resume.pdf",
         mime="application/octet-stream",
@@ -174,7 +174,7 @@ st.download_button(
 
 # -- Project 2
 st.write('\n')
-st.write("💻", "**CPU-GPU Heterogeneous System Simulator for Coherence Performance")
+st.write("💻", "**CPU-GPU Heterogeneous System Simulator for Coherence Performance**")
 st.write("2/2024 - 5/2024")
 st.write("""
         - ► Design and implemented system simulator for heterogenous CPU-GPU architecture to simulate coherence performance
