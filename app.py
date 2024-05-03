@@ -8,7 +8,8 @@ from streamlit_lottie import st_lottie
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
 css_file = current_dir / "style" / "main.css"
-resume_file = current_dir / "pdfs" / "resume.pdf"
+resume_file = current_dir / "pdfs" / "WK_resume.pdf"
+swe_resume_file = current_dir / "pdfs" / "WK_SWE_resume.pdf"
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Digital Resume | Wynn"
@@ -27,6 +28,8 @@ with open(css_file) as f:
     st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
 with open(resume_file, "rb") as pdf_file:
     PDFbyte = pdf_file.read()
+with open(swe_resume_file, "rb") as pdf_file:
+    swe_PDFbyte = pdf_file.read()
 with open("pdfs/EECS_373_Report.pdf", "rb") as pdf_file:
     eecs_373_report = pdf_file.read()
 with open("pdfs/EECS_470_Report.pdf", "rb") as pdf_file:
@@ -35,6 +38,8 @@ with open("pdfs/EECS_583_Final_Report.pdf", "rb") as pdf_file:
     eecs_583_report = pdf_file.read()
 with open("pdfs/EECS_587_Final_Report.pdf", "rb") as pdf_file:
     eecs_587_report = pdf_file.read()
+with open("pdfs/EECS_570_Final_Report.pdf", "rb") as pdf_file:
+    eecs_570_report = pdf_file.read()
 
 
 # --- HERO SECTION ---
@@ -51,7 +56,14 @@ with col2:
         file_name="Wynn-Resume.pdf",
         mime="application/octet-stream",
     )
+    st.download_button(
+        label=" 📄 Download Resume",
+        data=swe_PDFbyte,
+        file_name="SWE-Wynn-Resume.pdf",
+        mime="application/octet-stream",
+    )
     st.write("📫", EMAIL)
+    
 
 
 # --- SOCIAL LINKS ---
@@ -90,9 +102,9 @@ st.write("\n")
 st.subheader("Course Work")
 st.write(
     """
-- 📟 **Operating Systems**, **Parallel Computing**, **Advanced Compilers** 
-- 🌌 **Parralel Computer Architecture**, **Computer Architecture**, Computer Organization
-- 🌠 **Computer Networks**, Digitally Integrated Circuits, Intro. to Embedded Systems
+- 📟 Operating Systems, Parallel Computing, Advanced Compilers 
+- 🌌 Parralel Computer Architecture, Computer Architecture, Computer Organization
+- 🌠 Computer Networks, Digitally Integrated Circuits 
     """
 )
 
@@ -103,6 +115,17 @@ st.subheader("Work History")
 st.write("---")
 
 # --- JOB 1
+st.write("🤓", "**ENGR 100 Lab IA | UofM**")
+st.write("01/2024 - 05/2024")
+st.write(
+    """
+    - ► Instructed ENGR 100-250, An Introduction to Computing Systems with 70+ freshmen
+    - ► Taught weekly lab sessions assisting students in Verilog to develop a single-cycle datapath processor on a FPGA
+    - ► Hosted office hours to help in month long final project, focused on assembly and device drivers for IO devices
+"""
+)
+
+# --- JOB 2
 st.write("🚧", "**Hardware Developer Intern | IBM**")
 st.write("05/2023 - 08/2023")
 st.write(
@@ -113,8 +136,7 @@ st.write(
 """
 )
 
-
-# --- JOB 2
+# --- JOB 3
 st.write('\n')
 st.write("🚧", "**Electrical Engineering Intern | Whisker**")
 st.write("05/2022 - 08/2022")
@@ -152,6 +174,22 @@ st.download_button(
 
 # -- Project 2
 st.write('\n')
+st.write("💻", "**CPU-GPU Heterogeneous System Simulator for Coherence Performance")
+st.write("2/2024 - 5/2024")
+st.write("""
+        - ► Design and implemented system simulator for heterogenous CPU-GPU architecture to simulate coherence performance
+        - ► Implemented the Spandex Protocol for LLC to handle communication between CPU MSI and GPU VI coherence protocol
+        - ► Was able to effectively simulate effect of different cache parameters and network delay on the cycle count
+""")
+st.download_button(
+        label=" 📄 Download Report",
+        data=eecs_570_report,
+        file_name="System-Simulator-Report.pdf",
+        mime="application/octet-stream",
+)
+
+# -- Project 3
+st.write('\n')
 st.write("🐉", "**Cache Tiling and Tile Size Selection Algorithms**")
 st.write("10/2023 - 12/2023")
 st.write("""
@@ -164,24 +202,6 @@ st.download_button(
         label=" 📄 Download Report",
         data=eecs_583_report,
         file_name="Cache-Tiling-Report.pdf",
-        mime="application/octet-stream",
-)
-
-
-# -- Project 3
-st.write('\n')
-st.write("🏂", "**Snowboard Data Logger**")
-st.write("02/2023 - 05/2023")
-st.write("""
-        - ► Wrote firmware for STM-32 to track snowboard movement with a 9-DOF IMU, calculate location and positioning with GPS,
-            and displayed various important data utilizing a FSM
-        - ► Designed a PCB to manage the power of our system. Features include wireless charging, solar power, and sensor handling
-
-""")
-st.download_button(
-        label=" 📄 Download Report",
-        data=eecs_373_report,
-        file_name="Embedded-System-Report.pdf",
         mime="application/octet-stream",
 )
 
